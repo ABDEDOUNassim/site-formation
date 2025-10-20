@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Web, un avenir nouveau et possible</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Le Web, un avenir nouveau et possible</h1>
+    <p>Initiation au numérique et au développement web pour jeunes de 8 à 18 ans</p>
+    <button id="themeToggle" class="theme-btn">🌙 Mode sombre</button>
+  </header>
+
+  <section class="intro">
+    <h2>Présentation</h2>
+    <p>Une formation inclusive et ludique pour découvrir les bases de l'informatique, du HTML, du CSS et du JavaScript. Destinée aux jeunes de 8 à 18 ans en difficulté scolaire, cette formation vise à renforcer la confiance en soi et à éveiller des vocations.</p>
+  </section>
+
+  <section class="programme">
+    <h2>Programme des 15 séances</h2>
+    <div id="sessions"></div>
+  </section>
+
+  <section class="avis">
+    <h2>Vos avis</h2>
+    <form id="avisForm">
+      <input type="text" id="auteur" placeholder="Votre prénom" required />
+      <textarea id="commentaire" placeholder="Votre avis sur la formation" required></textarea>
+      <button type="submit">Publier</button>
+    </form>
+    <div id="listeAvis"></div>
+  </section>
+
+  <section class="contact">
+    <h2>Contact</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Votre nom" required />
+      <input type="email" id="email" placeholder="Votre e-mail" required />
+      <textarea id="message" placeholder="Votre message" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 ABDEDOU NASSIM – Formation & Inclusion Numérique</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
