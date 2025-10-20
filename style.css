@@ -5,7 +5,6 @@
   padding: 0;
 }
 
-/* --- STRUCTURE GENERALE --- */
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #f7f9fc;
@@ -13,7 +12,58 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
-  transition: background 0.4s, color 0.4s;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* --- DARK MODE --- */
+body.dark {
+  background-color: #000;
+  color: #b2ff9e;
+}
+
+body.dark header {
+  background: linear-gradient(120deg, #003300, #00cc66);
+}
+
+body.dark section {
+  background: #0a0a0a;
+  box-shadow: 0 0 10px rgba(0, 255, 128, 0.1);
+  
+}
+.session.active{  color: #0a0a0a;
+}
+
+body.dark footer {
+  background: #001a00;
+  color: #66ff99;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 1s ease forwards;
+}
+
+.pulse:hover {
+  animation: pulse 0.8s ease-in-out;
 }
 
 /* --- HEADER --- */
@@ -24,26 +74,37 @@ header {
   padding: 3rem 1rem;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
-  display: grid;
-  gap: 0.5rem;
-  justify-items: center;
+  animation: fadeIn 1s ease-out;
 }
 
-.theme-btn {
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  animation: slideUp 1s ease;
+}
+
+header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  animation: fadeIn 1.5s ease;
+}
+
+header button {
   margin-top: 1rem;
-  background: #ffffff;
+  background: white;
   color: #0077ff;
   border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 20px;
-  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-.theme-btn:hover {
+header button:hover {
   background: #0077ff;
   color: white;
+  transform: scale(1.05);
 }
 
 /* --- SECTIONS --- */
@@ -56,15 +117,17 @@ section {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   display: grid;
   gap: 1rem;
-  transition: background 0.4s, color 0.4s;
+  animation: fadeIn 1s ease;
 }
 
+/* --- TITRES --- */
 h2 {
   color: #0077ff;
   font-size: 1.6rem;
   border-bottom: 2px solid #00d4ff;
   padding-bottom: 0.3rem;
   margin-bottom: 1rem;
+  animation: slideUp 1s ease;
 }
 
 /* --- BOUTONS --- */
@@ -76,10 +139,12 @@ button {
   border-radius: 10px;
   cursor: pointer;
   justify-self: start;
+  transition: all 0.3s ease;
 }
 
 button:hover {
   background: #005ecb;
+  transform: translateY(-3px);
 }
 
 /* --- FORMULAIRES --- */
@@ -90,17 +155,19 @@ input, textarea {
   border: 1px solid #ccc;
   font-family: inherit;
   font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-form {
-  display: grid;
-  gap: 0.8rem;
+input:focus, textarea:focus {
+  border-color: #0077ff;
+  box-shadow: 0 0 5px rgba(0, 119, 255, 0.3);
 }
 
 /* --- PROGRAMME DES SÉANCES --- */
 #sessions {
   display: grid;
   gap: 1rem;
+  animation: fadeIn 1.5s ease;
 }
 
 .session {
@@ -109,10 +176,12 @@ form {
   border-radius: 12px;
   transition: all 0.3s ease;
   display: grid;
+  cursor: pointer;
 }
 
 .session:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
+  box-shadow: 0 5px 10px rgba(0, 119, 255, 0.2);
 }
 
 .session h3 {
@@ -120,16 +189,17 @@ form {
   justify-content: space-between;
   align-items: center;
   color: #0077ff;
-  cursor: pointer;
 }
 
 .session p {
   display: none;
   margin-top: 0.5rem;
+  line-height: 1.5;
 }
 
 .session.active p {
   display: block;
+  animation: fadeIn 0.6s ease;
 }
 
 /* --- SECTION AVIS --- */
@@ -141,6 +211,7 @@ form {
 #listeAvis {
   display: grid;
   gap: 1rem;
+  animation: fadeIn 1s ease;
 }
 
 .avis-card {
@@ -150,6 +221,12 @@ form {
   border-radius: 10px;
   display: grid;
   gap: 0.5rem;
+  animation: slideUp 0.8s ease;
+  transition: transform 0.3s ease;
+}
+
+.avis-card:hover {
+  transform: translateY(-4px);
 }
 
 .avis-card h4 {
@@ -162,65 +239,22 @@ form {
   color: #444;
 }
 
+/* --- CONTACT --- */
+.contact form {
+  display: grid;
+  gap: 1rem;
+}
+
 /* --- FOOTER --- */
 footer {
   background: #222;
   color: white;
   text-align: center;
   padding: 1rem;
+  animation: fadeIn 1.5s ease;
 }
 
-/* --- DARK MODE --- */
-body.dark {
-  background: #0a0a0a;
-  color: #d8ffd8;
-}
-
-body.dark header {
-  background: linear-gradient(120deg, #003300, #00aa00);
-  color: #d8ffd8;
-}
-
-body.dark .theme-btn {
-  background: #00aa00;
-  color: black;
-}
-
-body.dark section {
-  background: #111;
-  color: #d8ffd8;
-  box-shadow: 0 0 10px #00aa00;
-}
-
-body.dark h2 {
-  color: #00ff66;
-  border-bottom: 2px solid #009933;
-}
-
-body.dark .session {
-  background: #0d1b0d;
-  border-left: 5px solid #00ff66;
-}
-
-body.dark .avis-card {
-  background: #0d1b0d;
-  border-left: 5px solid #00ff66;
-}
-
-body.dark button {
-  background: #00aa00;
-}
-
-body.dark button:hover {
-  background: #009900;
-}
-
-body.dark footer {
-  background: #001100;
-  color: #00ff66;
-}
-
-/* --- RESPONSIVE --- */
+/* --- RESPONSIVE DESIGN --- */
 @media (max-width: 768px) {
   section {
     padding: 1.5rem;
@@ -232,5 +266,18 @@ body.dark footer {
 
   h2 {
     font-size: 1.4rem;
+  }
+}
+
+/* --- GRAND ÉCRAN : RÉDUCTION DES MARGES --- */
+@media (min-width: 1200px) {
+  section {
+    margin: 1.5rem auto;
+    max-width: 1100px;
+    padding: 1.5rem 2rem;
+  }
+
+  header {
+    padding: 2.5rem 1rem;
   }
 }
